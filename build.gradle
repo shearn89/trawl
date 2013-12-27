@@ -20,8 +20,6 @@ repositories {
 	mavenCentral()
 }
 
-scalaVersion = '2.9.0'
-
 dependencies {
 	// Libraries needed to run the scala tools
 	scalaTools "org.scala-lang:scala-compiler:${scalaVersion}",
