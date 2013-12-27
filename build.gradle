@@ -1,0 +1,40 @@
+import templates.*
+
+apply plugin: 'maven'
+
+buildscript {
+	repositories {
+		mavenCentral()
+		mavenLocal()
+	}
+	dependencies {
+		classpath group: 'gradle-templates', name:'gradle-templates', version: '1.4'
+	}
+}
+apply plugin: 'templates'
+apply plugin: 'scala'
+
+group = 'trawl'
+
+repositories {
+	mavenCentral()
+}
+
+scalaVersion = '2.9.0'
+
+dependencies {
+	// Libraries needed to run the scala tools
+	scalaTools "org.scala-lang:scala-compiler:${scalaVersion}",
+	           "org.scala-lang:scala-library:${scalaVersion}"
+
+	// Libraries needed for scala api
+	compile "org.scala-lang:scala-library:${scalaVersion}"
+}
+
+
+compileScala {
+	scalaCompileOptions.useCompileDaemon = true
+
+	// optionally specify host and port of the daemon:
+	scalaCompileOptions.daemonServer = 'localhost:4243'
+}
